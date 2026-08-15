@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "client",
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "outDir": "dist",
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "types": ["vite/client"],
+    "paths": {
+      "@shared/*": ["../shared/*"],
+      "@/*": ["src/*"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "../shared/**/*"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "server",
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "outDir": "dist",
+    "declaration": true,
+    "composite": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["node", "tsconfig-paths"],
+    "paths": {
+      "@shared/*": ["../shared/*"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "../shared/**/*"
+  ]
+}

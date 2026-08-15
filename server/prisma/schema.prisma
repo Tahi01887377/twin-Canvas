@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Canvas {
+  id          String   @id @default(cuid())
+  roomId      String   @unique
+  name        String
+  ownerId     String
+  width       Int
+  height      Int
+  background  String
+  version     Int      @default(1)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  objects     CanvasObject[]
+}
+
+model CanvasObject {
+  id        String   @id @default(cuid())
+  canvasId  String
+  objectId  String   @unique
+  type      String
+  data      String
+  zIndex    Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  canvas    Canvas   @relation(fields: [canvasId], references: [id], onDelete: Cascade)
+
+  @@index([canvasId])
+}
